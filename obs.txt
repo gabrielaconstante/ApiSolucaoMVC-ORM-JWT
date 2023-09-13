@@ -1,0 +1,51 @@
+ Desenvolver uma aplicação servidora em que cada produto: cod_produto, nome_produto e qtde_produto 
+tenha categoria: id_categoria, nome_categoria. Quando a quantidade do produto for menor ou igual a 3, 
+registrar em pedido: num_pedido, cod_produto, qtde_pedido, a quantidade de 4. Se a quantidade for maior 
+que 3 e menor que 7, registrar 3. Do contrário não registrar em pedido. Essa aplicação tem que atender as 
+requisições CRUD oriundas de qualquer cliente-server por meio de uma API Rest. 
+Como também permitir consultas de produto por categoria e por quantidade de pedido. 
+A tecnologia para a implementação da aplicação é de livre escolha pela dupla. 
+Além disso, inserir a utilização de token (JWT) em um dos end-points da API ou se preferir 
+implemente uma funcionalidade de login (usuário e senha) com token.
+
+Regras:
+	°Cada produto deve ter categoria
+	°Quando a qtd do produto for menor ou igual a 3 registrar em pedido a quantidade de 4
+	°Se a qtd do produto for maior que 3 e menor que 7 registrar em pedido a quantidade de 3
+	°Caso a qtd for maior ou igual a 7 não registrar em pedido
+	°Usar API Rest
+	Permiti a consulta de pedidos por categoria e quantidade de pedido
+	ESCOLHER UM DOS DOIS ULTIMOS PARA FAZER ----
+	Utilizar Token (JWT) em um dos end-points da API°
+	°Funcionalidade de login com token
+
+bibliotecas bodyparser, dotever-save, express, jsonwebtoken
+npm install body-parser dotenv-save express jsonwebtoken --save
+
+Tabelas e campos
+Produto: cod_produto, nome_produto e qtde_produto
+categoria: id_categoria, nome_categoria
+pedido: num_pedido, cod_produto, qtde_pedido
+
+-- Tabela Produto
+CREATE TABLE Produto (
+  cod_produto INT PRIMARY KEY,
+  nome_produto VARCHAR(255),
+  qtde_produto INT
+);
+
+-- Tabela Categoria
+CREATE TABLE Categoria (
+  id_categoria INT PRIMARY KEY,
+  nome_categoria VARCHAR(255)
+);
+
+-- Tabela Pedido
+CREATE TABLE Pedido (
+  num_pedido INT PRIMARY KEY,
+  cod_produto INT,
+  qtde_pedido INT,
+  FOREIGN KEY (cod_produto) REFERENCES Produto(cod_produto)
+);
+
+precisa decodificar o token e cumprir todos os requisitos
